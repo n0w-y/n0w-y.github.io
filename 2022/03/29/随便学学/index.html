@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="目前来说是中间人攻击的准备">
+    <meta name="author" content="Keep Team">
+    
+    <title>
+        
+            随便学学 |
+        
+        Keep Theme
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"n0w-y.github.io","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Keep Theme
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">随便学学</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Keep Team</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-29 23:19:58</span>
+        <span class="mobile">2022-03-29 23:19</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1>~</h1>
+<h2 id="DHCP攻击与防御">DHCP攻击与防御</h2>
+<h3 id="什么是DHCP">什么是DHCP</h3>
+<p>DHCP-动态主机配置协议（即插即用协议、零配置协议）</p>
+<p>当一个主机新加入一个网络时，DHCP允许主机自动获取IP地址，同时还能获取子网掩码、默认网关和本地DNS服务器地址，即DHCP具有将主机自动连接进一个网络的能力。若没有DHCP，则每有一台主机加入网络，就需要管理员手动为其配置IP</p>
+<h3 id="如何工作">如何工作</h3>
+<p>主机获取ip可分为四个步骤：DHCP Discover、DHCP Offer、DHCP Request、DHCP Ack</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic@main/image-20220322155116027.png" alt="image-20220322155116027"></p>
+<h4 id="DHCP-Discover">DHCP Discover</h4>
+<p>主机新加入某个网络后，生成DHCP Discover报文，DHCP Discover报文封装在UDP数据报中，然后封装在IP数据报中，使用目的地址为广播地址255.255.255.255，源IP地址为0.0.0.0，最后在数据链路层封装成帧，以广播形式发送</p>
+<h4 id="DHCP-Offer">DHCP Offer</h4>
+<p>DHCP服务器收到DHCP Discover报文时，生成DHCP Offer报文，DHCP Offer报文包含推荐IP、网络掩码和IP租用期，发送报文源IP地址为DHCP服务器的IP，目的IP地址为255.255.255.255</p>
+<h4 id="DHCP-Request">DHCP Request</h4>
+<p>有可能存在多个DHCP服务器，所以主机可能会收到多个DHCP Offer报文，此时主机选择第一个收到的提供报文，丢弃其它的DHCP Offer报文。主机发送DHCP Request报文，仍以广播形式发送但报文中存在指定的DHCP服务器ID，告知该服务器将要租用提供的IP</p>
+<h4 id="DHCP-Ack">DHCP Ack</h4>
+<p>DHCP服务器收到DHCP Request报文后发送DHCP Ack报文，告知主机可以使用提供的IP地址，并在IP地址池标记分配的IP地址，在服务端将MAC地址和IP地址绑定</p>
+<h4 id="IP地址续租">IP地址续租</h4>
+<p>当租期50%过后，客户机会再次发送DHCP Request包，进行续约，如服务器无响应，则继续使用并在 87.5%再次 DHCP Request包，进行续约，如果没有，则客户端继续使用该IP地址直至到期。客户端向DHCP 服务器发送DHCP Release报文来释放该IP地址，并开始新的IP地址申请过程。</p>
+<h3 id="DHCP攻击">DHCP攻击</h3>
+<h4 id="仿冒DHCP报文攻击">仿冒DHCP报文攻击</h4>
+<p>攻击者向DHCP Server申请大量的IP地址或发送DHCP Request 数据包申请续租IP地址，导致IP池中IP地址被耗尽，新上线主机无法获得IP地址，或攻击者冒充合法用户向DHCP Server发送DHCP Release报文，导致用户异常下线</p>
+<h4 id="DHCP-Server仿冒攻击">DHCP Server仿冒攻击</h4>
+<p>由于DHCP Server和DHCP Client之间没有认证机制，所以攻击者可以伪装成DHCP Server，就可以为客户端分配IP地址以及其他网络参数。攻击者能够通过为DHCP客户端分配错误的信息导致其无法上线（可通过饿死攻击，在与DHCP服务器的竞争中胜利）</p>
+<h4 id="中间人攻击">中间人攻击</h4>
+<p>攻击者将自己的MAC地址和DHCP服务器IP地址构造一个DHCP报文发送给DHCP客户端，客户端收到后学习，导致DHCP客户端发送到DHCP的所有数据包都经过攻击者</p>
+<p>攻击者将自己的MAC地址和DHCP客户端的IP地址构造成一个DHCP报文发送给DHCP服务器，DHCP服务器收到后学习MAC和IP地址对应关系，导致DHCP服务器发送给DHCP客户端的所有数据包都经过攻击者</p>
+<h3 id="DHCP防御">DHCP防御</h3>
+<p>要防御DHCP攻击，只要让非授权的DHCP服务器的回应无法通过网络即可。交换机启用DHCP Snooping技术，通过信任端口和非信任端口、DHCP Snooping绑定表便能只让合法的DHCP回应通过交换机，此时网络中的PC不用做出任何改变</p>
+<h4 id="DHCP-Snooping">DHCP Snooping</h4>
+<p>DHCP Snooping 是一种DHCP安全功能，类似于在DHCP Server 和DHCP Client之间的防火墙。</p>
+<p>在DHCP Snooping技术中，交换机的端口分为信任端口和非信任端口，默认所有端口都为非信任端口，通常会将与DHCP Server相连的端口配置为信任端口，其它端口为非信任端口。交换机从信任端口收到DHCP报文后会正常转发，从非信任端口收到DHCP Server报文后会直接丢弃</p>
+<p>具有DHCP Snooping 功能的设备通过DHCP Ack报文创建、维护DHCP Snooping绑定表，绑定表中记录了主机的IP地址、IP地址租用时间、MAC地址、VLAN ID 和接口信息，设备通过DHCP Snooping绑定表检查DHCP报文的有效性</p>
+<h4 id="仿冒DHCP报文攻击防御">仿冒DHCP报文攻击防御</h4>
+<p>对于伪造DHCP Request 和 DHCP Release报文</p>
+<p>通过DHCP Snooping绑定表对DHCP Request和DHCP Release报文进行检查（VLAN、IP、MAC、接口信息是否匹配动态绑定表），若信息不匹配则丢弃</p>
+<p>对于伪造DHCP Discover报文</p>
+<p>为了抑制大量恶意申请IP地址，可以配置设备或接口允许接入的最大DHCP用户数，当接入用户达到阈值时不再允许任何用户通过此设备或接口申请IP地址</p>
+<h4 id="DHCP-Server仿冒攻击防御">DHCP Server仿冒攻击防御</h4>
+<p>通过DHCP Snooping技术中的交换机的信任端口、非信任端口，对于非信任端口的DHCP Server报文会直接丢弃，从而防止DHCP Server仿冒攻击</p>
+<h4 id="中间人攻击防御">中间人攻击防御</h4>
+<p>DHCP中间人攻击需要利用ARP欺骗，若能够防御ARP欺骗那么也能给防御DHCP中间人攻击</p>
+<p>运行DHCP Snooping的交换机会创建并维护DHCP Snooping绑定表，当攻击者发送ARP请求报文时交换机会检查报文中的源IP地址和源MAC地址，若不匹配则丢弃该报文</p>
+<h2 id="Cisco-Packet-Tracer">Cisco Packet Tracer</h2>
+<h3 id="操作">操作</h3>
+<h4 id="路由器">路由器</h4>
+<p>Route&gt; enble 进入特权模式</p>
+<p>Router#</p>
+<p>Route(config)# hostname name  更改主机名</p>
+<p>name(config)#</p>
+<p>Route# configure terminal 进入全局配置模式</p>
+<p>Router(config)#</p>
+<p>Router#show running-config 显示配置内容，在特权模式下使用该命令查看已经完成的配置，空格查看下一页，回车查看下一行</p>
+<h3 id="Wrong">Wrong</h3>
+<h4 id="接口名">接口名</h4>
+<p>进入接口配置模式，出现</p>
+<p><code>%Invalid interface type and number</code></p>
+<p>查看接口名</p>
+<h4 id="错误指令">错误指令</h4>
+<p>输入错误指令后出现，模拟器会将错误的指令进行DNS解析，其过程非常缓慢</p>
+<p><code>Translating &quot;end&quot;...domain server (255.255.255.255)</code></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E9%9A%8F%E7%AC%94/">#随笔</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/29/Log4j2%E6%BC%8F%E6%B4%9E/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">CVE-2021-44228</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Keep Team</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
