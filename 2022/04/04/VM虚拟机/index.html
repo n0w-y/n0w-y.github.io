@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="目前来说是中间人攻击的准备">
+    <meta name="description" content="啊">
     <meta name="author" content="n0w-y">
     
     <title>
         
-            随便学学 |
+            VM虚拟机 |
         
         ywb&#39;blog
     </title>
@@ -178,7 +178,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">随便学学</span>
+            <span class="title-hover-animation">VM虚拟机</span>
         </div>
 
         
@@ -197,8 +197,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-29 23:19:58</span>
-        <span class="mobile">2022-03-29 23:19</span>
+        <span class="pc">2022-04-04 02:06:08</span>
+        <span class="mobile">2022-04-04 02:06</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -241,66 +241,56 @@
         
 
         <div class="article-content markdown-body">
-            <h1>~</h1>
-<h2 id="DHCP攻击与防御">DHCP攻击与防御</h2>
-<h3 id="什么是DHCP">什么是DHCP</h3>
-<p>DHCP-动态主机配置协议（即插即用协议、零配置协议）</p>
-<p>当一个主机新加入一个网络时，DHCP允许主机自动获取IP地址，同时还能获取子网掩码、默认网关和本地DNS服务器地址，即DHCP具有将主机自动连接进一个网络的能力。若没有DHCP，则每有一台主机加入网络，就需要管理员手动为其配置IP</p>
-<h3 id="如何工作">如何工作</h3>
-<p>主机获取ip可分为四个步骤：DHCP Discover、DHCP Offer、DHCP Request、DHCP Ack</p>
-<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic@main/image-20220322155116027.png" alt="image-20220322155116027"></p>
-<h4 id="DHCP-Discover">DHCP Discover</h4>
-<p>主机新加入某个网络后，生成DHCP Discover报文，DHCP Discover报文封装在UDP数据报中，然后封装在IP数据报中，使用目的地址为广播地址255.255.255.255，源IP地址为0.0.0.0，最后在数据链路层封装成帧，以广播形式发送</p>
-<h4 id="DHCP-Offer">DHCP Offer</h4>
-<p>DHCP服务器收到DHCP Discover报文时，生成DHCP Offer报文，DHCP Offer报文包含推荐IP、网络掩码和IP租用期，发送报文源IP地址为DHCP服务器的IP，目的IP地址为255.255.255.255</p>
-<h4 id="DHCP-Request">DHCP Request</h4>
-<p>有可能存在多个DHCP服务器，所以主机可能会收到多个DHCP Offer报文，此时主机选择第一个收到的提供报文，丢弃其它的DHCP Offer报文。主机发送DHCP Request报文，仍以广播形式发送但报文中存在指定的DHCP服务器ID，告知该服务器将要租用提供的IP</p>
-<h4 id="DHCP-Ack">DHCP Ack</h4>
-<p>DHCP服务器收到DHCP Request报文后发送DHCP Ack报文，告知主机可以使用提供的IP地址，并在IP地址池标记分配的IP地址，在服务端将MAC地址和IP地址绑定</p>
-<h4 id="IP地址续租">IP地址续租</h4>
-<p>当租期50%过后，客户机会再次发送DHCP Request包，进行续约，如服务器无响应，则继续使用并在 87.5%再次 DHCP Request包，进行续约，如果没有，则客户端继续使用该IP地址直至到期。客户端向DHCP 服务器发送DHCP Release报文来释放该IP地址，并开始新的IP地址申请过程。</p>
-<h3 id="DHCP攻击">DHCP攻击</h3>
-<h4 id="仿冒DHCP报文攻击">仿冒DHCP报文攻击</h4>
-<p>攻击者向DHCP Server申请大量的IP地址或发送DHCP Request 数据包申请续租IP地址，导致IP池中IP地址被耗尽，新上线主机无法获得IP地址，或攻击者冒充合法用户向DHCP Server发送DHCP Release报文，导致用户异常下线</p>
-<h4 id="DHCP-Server仿冒攻击">DHCP Server仿冒攻击</h4>
-<p>由于DHCP Server和DHCP Client之间没有认证机制，所以攻击者可以伪装成DHCP Server，就可以为客户端分配IP地址以及其他网络参数。攻击者能够通过为DHCP客户端分配错误的信息导致其无法上线（可通过饿死攻击，在与DHCP服务器的竞争中胜利）</p>
-<h4 id="中间人攻击">中间人攻击</h4>
-<p>攻击者将自己的MAC地址和DHCP服务器IP地址构造一个DHCP报文发送给DHCP客户端，客户端收到后学习，导致DHCP客户端发送到DHCP的所有数据包都经过攻击者</p>
-<p>攻击者将自己的MAC地址和DHCP客户端的IP地址构造成一个DHCP报文发送给DHCP服务器，DHCP服务器收到后学习MAC和IP地址对应关系，导致DHCP服务器发送给DHCP客户端的所有数据包都经过攻击者</p>
-<h3 id="DHCP防御">DHCP防御</h3>
-<p>要防御DHCP攻击，只要让非授权的DHCP服务器的回应无法通过网络即可。交换机启用DHCP Snooping技术，通过信任端口和非信任端口、DHCP Snooping绑定表便能只让合法的DHCP回应通过交换机，此时网络中的PC不用做出任何改变</p>
-<h4 id="DHCP-Snooping">DHCP Snooping</h4>
-<p>DHCP Snooping 是一种DHCP安全功能，类似于在DHCP Server 和DHCP Client之间的防火墙。</p>
-<p>在DHCP Snooping技术中，交换机的端口分为信任端口和非信任端口，默认所有端口都为非信任端口，通常会将与DHCP Server相连的端口配置为信任端口，其它端口为非信任端口。交换机从信任端口收到DHCP报文后会正常转发，从非信任端口收到DHCP Server报文后会直接丢弃</p>
-<p>具有DHCP Snooping 功能的设备通过DHCP Ack报文创建、维护DHCP Snooping绑定表，绑定表中记录了主机的IP地址、IP地址租用时间、MAC地址、VLAN ID 和接口信息，设备通过DHCP Snooping绑定表检查DHCP报文的有效性</p>
-<h4 id="仿冒DHCP报文攻击防御">仿冒DHCP报文攻击防御</h4>
-<p>对于伪造DHCP Request 和 DHCP Release报文</p>
-<p>通过DHCP Snooping绑定表对DHCP Request和DHCP Release报文进行检查（VLAN、IP、MAC、接口信息是否匹配动态绑定表），若信息不匹配则丢弃</p>
-<p>对于伪造DHCP Discover报文</p>
-<p>为了抑制大量恶意申请IP地址，可以配置设备或接口允许接入的最大DHCP用户数，当接入用户达到阈值时不再允许任何用户通过此设备或接口申请IP地址</p>
-<h4 id="DHCP-Server仿冒攻击防御">DHCP Server仿冒攻击防御</h4>
-<p>通过DHCP Snooping技术中的交换机的信任端口、非信任端口，对于非信任端口的DHCP Server报文会直接丢弃，从而防止DHCP Server仿冒攻击</p>
-<h4 id="中间人攻击防御">中间人攻击防御</h4>
-<p>DHCP中间人攻击需要利用ARP欺骗，若能够防御ARP欺骗那么也能给防御DHCP中间人攻击</p>
-<p>运行DHCP Snooping的交换机会创建并维护DHCP Snooping绑定表，当攻击者发送ARP请求报文时交换机会检查报文中的源IP地址和源MAC地址，若不匹配则丢弃该报文</p>
-<h2 id="Cisco-Packet-Tracer">Cisco Packet Tracer</h2>
-<h3 id="操作">操作</h3>
-<h4 id="路由器">路由器</h4>
-<p>Route&gt; enble 进入特权模式</p>
-<p>Router#</p>
-<p>Route(config)# hostname name  更改主机名</p>
-<p>name(config)#</p>
-<p>Route# configure terminal 进入全局配置模式</p>
-<p>Router(config)#</p>
-<p>Router#show running-config 显示配置内容，在特权模式下使用该命令查看已经完成的配置，空格查看下一页，回车查看下一行</p>
-<h3 id="Wrong">Wrong</h3>
-<h4 id="接口名">接口名</h4>
-<p>进入接口配置模式，出现</p>
-<p><code>%Invalid interface type and number</code></p>
-<p>查看接口名</p>
-<h4 id="错误指令">错误指令</h4>
-<p>输入错误指令后出现，模拟器会将错误的指令进行DNS解析，其过程非常缓慢</p>
-<p><code>Translating &quot;end&quot;...domain server (255.255.255.255)</code></p>
+            <h1>VMware</h1>
+<h2 id="VM中的三种网络连接模式">VM中的三种网络连接模式</h2>
+<p>桥接模式、内部网络模式（NAT）、主机模式</p>
+<h3 id="桥接模式">桥接模式</h3>
+<p>简单理解桥接模式下的虚拟机为虚拟出来的主机同网段下的主机，虚拟机会占有局域网中的IP地址并且能够和真实终端互相访问</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic@main/3.jpg" alt="3"></p>
+<p>虚拟机虚拟出VMnet0网卡，将主机网卡与虚拟机虚拟网卡利用虚拟网桥进行桥接，从而能够访问网络</p>
+<p>此时主机无法看到VMnet0网卡，可以看到并没有VMnet0适配器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic@main/image-20220404010359613.png" alt="image-20220404010359613"></p>
+<p>桥接模式下虚拟机和主机要在同一网段下，可以通过启动dhcp服务自动获取ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/network/interfaces</span><br><span class="line">改为 auto eth0</span><br><span class="line">	iface eth0 inet dhcp</span><br></pre></td></tr></table></figure>
+<h3 id="NAT模式">NAT模式</h3>
+<p>从外部看虚拟机和主机为一个终端，虚拟机与主机共享一个IP地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic@main/5.jpg" alt="5"></p>
+<p>VMware在主机建立专用NAT虚拟网络用于主机和虚拟机通信（一台主机只允许一个NAT虚拟网络，所以多台NAT模式的虚拟机共用一个虚拟网络），虚拟机向外部发送的请求会被NAT适配器加上标记并以主机的IP发送，外部的响应会由NAT适配器根据特殊标记转发个对应虚拟机。NAT模式下主机和虚拟机能够互相访问，但虚拟机无法与外部互相访问</p>
+<h4 id="VM下NAT模式主机与虚拟机的通信">VM下NAT模式主机与虚拟机的通信</h4>
+<p>通常来说NAT模式下外网无法访问内网，毕竟在外网看来，整个内网就是一个IP</p>
+<p>在图中去掉VMnet8适配器后就是通常理解的NAT模式了，此时主机在外网，虚拟机在内网</p>
+<p>主机=&gt;虚拟机</p>
+<p>主机无法访问虚拟机，主机若想访问内网，其请求会被直接发送到物理网关，网关不认识NAT网段将其直接丢弃</p>
+<p>虚拟机=&gt;主机</p>
+<p>虚拟机能够访问主机，虚拟机的请求会通过虚拟交换机，修改源IP和源PORT，通过物理网关发送到局域网然后又被自己接收</p>
+<blockquote>
+<p>为什么在NAT模式下主机能ping通虚拟机呢？</p>
+</blockquote>
+<p>关键就在于VMnet8网络适配器了，将适配器和虚拟网络的设置在同一网段，当主机像虚拟机发起请求时，请求由适配器转发给虚拟交换机，这样就到达了虚拟网络内部</p>
+<blockquote>
+<p>到这里就能解决VM虚拟机NAT模式下烦人的问题了</p>
+</blockquote>
+<h4 id="主机无法ping通虚拟机但是虚拟机能够ping通主机">主机无法ping通虚拟机但是虚拟机能够ping通主机</h4>
+<p>主机ping虚拟机与VMnet8适配器息息相关，而虚拟机ping主机却不需要这个适配器（验证？将VMnet8适配器禁用，然后虚拟机ping主机试试）</p>
+<p>这样分析后，就能知道问题出现在VMnet8适配器上了</p>
+<p>1）首先将防火墙关闭（也有可能是防火墙没关导致）</p>
+<p>2）然后看适配器，适配器被禁用就启动适配器，如果不在同一网段就改成同一网段，改完之后记得重启适配器（我就是因为没有重启浪费了不少时间…）</p>
+<h3 id="主机模式">主机模式</h3>
+<p>相较于NAT模式少了NAT设备</p>
+<p>一般情况下主机模式下的虚拟机无法连接Internat，一台主机能够有多个主机模式的虚拟网络，相同虚拟网络下的虚拟机能够相互访问，但是不同虚拟网络下的虚拟机不能相互通信</p>
+<h3 id="记一次曾经痛苦的经历">记一次曾经痛苦的经历</h3>
+<p>NAT模式虚拟机能够ping通主机，主机ping虚拟机如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic@main/image-20220329192514503.png" alt="image-20220329192514503"></p>
+<p>1）考虑虚拟机防火墙禁ping，关闭防火墙试试，失败</p>
+<p>2）查看本机vmnet8网卡是否被禁用，失败</p>
+<p>3）换成桥接模式（打不过就逃）</p>
+<p>换成桥接模式后主机能够ping通虚拟机，虚拟机却无法ping主机了</p>
+<p>原因在于主机的防火墙没关（</p>
+<p>措施：</p>
+<p>1）直接关闭防火墙</p>
+<p>2）如果不想关的话，可以防火墙与网络保护-&gt;高级设置-&gt;入站规则-&gt;文件和打印机共享(ICMPv4) 公用，启用规则</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic@main/image-20220329211633623.png" alt="image-20220329211633623"></p>
+<p>过了段时间再来整这个问题，其实也很简单，当时就是不懂一直瞎搞</p>
 
         </div>
 
@@ -322,13 +312,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/04/04/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+                           href="/2022/04/04/NAT%E6%A8%A1%E5%BC%8F/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">VM虚拟机</span>
+                                <span class="post-nav-title-item">NAT模式</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -338,10 +328,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/29/Log4j2%E6%BC%8F%E6%B4%9E/"
+                           href="/2022/03/29/%E9%9A%8F%E4%BE%BF%E5%AD%A6%E5%AD%A6/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">CVE-2021-44228</span>
+                                <span class="post-nav-title-item">随便学学</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -466,7 +456,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">~</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DHCP%E6%94%BB%E5%87%BB%E4%B8%8E%E9%98%B2%E5%BE%A1"><span class="nav-number">1.1.</span> <span class="nav-text">DHCP攻击与防御</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDHCP"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是DHCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.2.</span> <span class="nav-text">如何工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-Discover"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">DHCP Discover</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-Offer"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">DHCP Offer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-Request"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">DHCP Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-Ack"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">DHCP Ack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80%E7%BB%AD%E7%A7%9F"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">IP地址续租</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP%E6%94%BB%E5%87%BB"><span class="nav-number">1.1.3.</span> <span class="nav-text">DHCP攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BF%E5%86%92DHCP%E6%8A%A5%E6%96%87%E6%94%BB%E5%87%BB"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">仿冒DHCP报文攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-Server%E4%BB%BF%E5%86%92%E6%94%BB%E5%87%BB"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">DHCP Server仿冒攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">中间人攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP%E9%98%B2%E5%BE%A1"><span class="nav-number">1.1.4.</span> <span class="nav-text">DHCP防御</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-Snooping"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">DHCP Snooping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BF%E5%86%92DHCP%E6%8A%A5%E6%96%87%E6%94%BB%E5%87%BB%E9%98%B2%E5%BE%A1"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">仿冒DHCP报文攻击防御</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP-Server%E4%BB%BF%E5%86%92%E6%94%BB%E5%87%BB%E9%98%B2%E5%BE%A1"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">DHCP Server仿冒攻击防御</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E9%98%B2%E5%BE%A1"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">中间人攻击防御</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cisco-Packet-Tracer"><span class="nav-number">1.2.</span> <span class="nav-text">Cisco Packet Tracer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">路由器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wrong"><span class="nav-number">1.2.2.</span> <span class="nav-text">Wrong</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E5%90%8D"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">接口名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E6%8C%87%E4%BB%A4"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">错误指令</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">VMware</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VM%E4%B8%AD%E7%9A%84%E4%B8%89%E7%A7%8D%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">VM中的三种网络连接模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">桥接模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAT%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">NAT模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VM%E4%B8%8BNAT%E6%A8%A1%E5%BC%8F%E4%B8%BB%E6%9C%BA%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">VM下NAT模式主机与虚拟机的通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E6%97%A0%E6%B3%95ping%E9%80%9A%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%86%E6%98%AF%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%83%BD%E5%A4%9Fping%E9%80%9A%E4%B8%BB%E6%9C%BA"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">主机无法ping通虚拟机但是虚拟机能够ping通主机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">主机模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9B%BE%E7%BB%8F%E7%97%9B%E8%8B%A6%E7%9A%84%E7%BB%8F%E5%8E%86"><span class="nav-number">1.1.4.</span> <span class="nav-text">记一次曾经痛苦的经历</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>

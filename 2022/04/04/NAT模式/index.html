@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
+    <meta name="description" content="啊">
     <meta name="author" content="n0w-y">
     
     <title>
         
-            归档: 2022 |
+            NAT模式 |
         
         ywb&#39;blog
     </title>
@@ -69,7 +69,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 归档
@@ -135,7 +135,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">归档</a>
                 </li>
             
@@ -175,66 +175,122 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">NAT模式</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/123.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">n0w-y</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-04-04 02:18:59</span>
+        <span class="mobile">2022-04-04 02:18</span>
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[6]</span>
-            </div>
-            <ul class="article-list">
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/04/04/NAT%E6%A8%A1%E5%BC%8F/"
-                        >NAT模式</a>
-                        <span class="article-date">04-04</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/04/04/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
-                        >VM虚拟机</a>
-                        <span class="article-date">04-04</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/03/29/Log4j2%E6%BC%8F%E6%B4%9E/"
-                        >CVE-2021-44228</a>
-                        <span class="article-date">03-29</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/03/29/cumt%E4%BF%A1%E5%AE%89%E5%A4%A7%E4%B8%89%E4%B8%8A%E8%AF%BE%E7%A8%8B%E8%80%83%E8%AF%95/"
-                        >cumt19级信安大三上课程考试</a>
-                        <span class="article-date">03-29</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/03/29/%E9%9A%8F%E4%BE%BF%E5%AD%A6%E5%AD%A6/"
-                        >随便学学</a>
-                        <span class="article-date">03-29</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/03/29/flask/"
-                        >flask</a>
-                        <span class="article-date">03-29</span>
+                    <li>
+                        <a href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1>NAT模式</h1>
+<p>Network Address Translation（网络地址转换），NAT是一种把内部私有网络地址转换成合法网络IP的技术，它允许一个机构以一个公用IP出现在网络上</p>
+<p>为什么要这么做？</p>
+<p>通过NAT可以将一整个局域网接入网络中并且只消耗了一个合法IP地址，而局域网内部通过私有IP地址通信</p>
+<p>IP地址保留为私有地址的区域</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10.0.0.0/8：10.0.0.0～10.255.255.255</span><br><span class="line">　　172.16.0.0/12：172.16.0.0～172.31.255.255</span><br><span class="line">　　192.168.0.0/16：192.168.0.0～192.168.255.255</span><br></pre></td></tr></table></figure>
+<p>私有地址只能在内部网络使用不能被路由转发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">源和目的IP地址同一网络下由交换机（数据链路层）转发以太网帧</span><br><span class="line">不同网络下时以太网帧发送给路由器，路由器负责在不同网络下传输报文</span><br></pre></td></tr></table></figure>
+<p>这样看，局域网就是内网，公有网络就是外网，内网计算机对于外网来说不可见</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E9%9A%8F%E7%AC%94/">#随笔</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/04/04/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">VM虚拟机</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -278,6 +334,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -323,6 +396,14 @@
 
     </div>
 
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">NAT模式</span></a></li></ol>
+    </div>
+</div>
+        </aside>
     
 
     <div class="image-viewer-container">
@@ -392,6 +473,14 @@
 
 
 <div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
     
 </div>
 
