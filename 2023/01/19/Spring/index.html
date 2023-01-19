@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="n0w-y">
+
+
+
+    <meta name="description" content="wonderful description">
+
+
+    <meta name="keywords" content="13155">
+
+
+<title>Spring | n0w-y</title>
+
+
+
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/n0w-y/pic/88473415_p0_master1200.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Ywb&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Ywb&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Spring</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">n0w-y</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 19, 2023&nbsp;&nbsp;11:12:50</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Spring/">Spring</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>Spring是什么？</strong></p>
+<p>Spring这里指Spring framework，一个用于简化Java开发的框架，也是学习Spring中其他项目的基础</p>
+<p><strong>Spring的好处？</strong></p>
+<ol>
+<li>耦合低，使用IoC思想能够很好的降耦</li>
+<li>能够很简单地使用Java EE API，如JDBC</li>
+<li>一站式服务，能够轻松整合各种框架和第三方类库</li>
+<li>面向切面编程</li>
+<li>测试方便</li>
+</ol>
+<h2 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h2><p>IoC：控制反转，是一种对象创建控制权由程序转移到外部的设计思想</p>
+<p>在之前的设计思想中，当需要使用对象时就new一个对象来使用，IoC思想下，从IoC容器中获取对象</p>
+<p>对于IoC学习中的许多概念：</p>
+<ul>
+<li>Bean：被实例化的、被IoC容器管理的对象</li>
+<li>IoC容器：负责实例化、配置对象和建立对象之间的依赖的容器</li>
+</ul>
+<h3 id="定义Bean"><a href="#定义Bean" class="headerlink" title="定义Bean"></a>定义Bean</h3><p>在学定义Bean前先了解Bean和IoC容器间的关系</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic/1604037368126454.png" alt="img"></p>
+<p>定义Bean有三种方法</p>
+<p><strong>基于XML配置</strong></p>
+<p>基于XML配置也有多种方式：基于构造方法、基于静态工厂、基于实例工厂以及基于实例工厂的改进（实现FactoryBean）</p>
+<ul>
+<li><p>基于构造方法：需要保证存在无参构造方法</p>
+<p>name为Bean名称，class为Bean类型</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;StuDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.example.Dao.impl.StuDaoimpl&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>基于注解配置</strong></p>
+<p>使用注解开发方式，需要创建一个配置类，在配置类中将需要定义为Bean的类添加至其Bean扫描路径，如@ComponentScan(“org.example”)</p>
+<p>在类上添加注解</p>
+<ul>
+<li>@Component或</li>
+<li>使用Component衍生注解<ul>
+<li>表现层：@Controller</li>
+<li>业务层：@Service</li>
+<li>数据从：@Repository</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置类</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;org.example&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringConfig</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Bean</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StuDaoimpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFunc</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in UserDao...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>基于Java配置</strong></p>
+<p>与注解配置一样同样需要在配置类中Bean扫描路径包含Bean类，与注解配置在Bean类中操作不同的是基于Java开发在配置类中操作</p>
+<p>基于Java配置需要在配置类中添加获取Bean对象的方法并在方法前使用@Bean注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;org.example&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> StuDaoimpl <span class="title function_">getStuDaoimpl</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StuDaoimpl</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取Bean"><a href="#获取Bean" class="headerlink" title="获取Bean"></a>获取Bean</h3><p>Spring中接口ApplicationContext表示IoC容器，负责管理Bean，实现ApplicationContext接口的类有：</p>
+<ul>
+<li>ClassPathXmlApplicationContext</li>
+<li>FileSystemXmlApplicationContext</li>
+<li>AnnotationConfigApplicationContext</li>
+<li>WebApplicationContext</li>
+</ul>
+<ol>
+<li>要获取Bean首先需要获取IoC容器对象</li>
+</ol>
+<ul>
+<li>FileSystemXmlApplicationContext：需要传入参数为加载XML配置文件的完整路径</li>
+<li>ClassPathXmlApplicationContext：只需要配置CLASSPATH 环境变量</li>
+</ul>
+<p>当使用注解开发时，要传入配置类而非XML配置文件时，以上两个容器就无法使用，需要使用AnnotationConfigApplicationContext</p>
+<ul>
+<li>AnnotationConfigApplicationContext：传入配置类.class</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ApplicationContext</span> <span class="variable">classPathXmlApplicationContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line"><span class="type">ApplicationContext</span> <span class="variable">ctx</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnnotationConfigApplicationContext</span>(SpringConfig.class);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在获取容器对象后，通过容器对象的getBean方法获取Bean对象</li>
+</ol>
+<p>根据getBean参数的方法来确定获取哪个Bean，有如下参数</p>
+<ul>
+<li>根据Bean名称<ul>
+<li>XML配置开发时的id值即名称</li>
+<li>基于注解开发和基于Java开发在注解后添加名称，如@Bean(“UserDao”)</li>
+</ul>
+</li>
+<li>根据类型<ul>
+<li>需要保证该类型Bean只有一种，否则报错</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型</span></span><br><span class="line"><span class="type">UserDao</span> <span class="variable">stuDao</span> <span class="operator">=</span>ctx.getBean(StuDaoimpl.class);</span><br><span class="line"><span class="comment">// 名称</span></span><br><span class="line"><span class="type">UserDao</span> <span class="variable">stuDao</span> <span class="operator">=</span> (UserDao) ctx.getBean(<span class="string">&quot;StuDao&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>Bean的生命周期：被实例化（变成可用状态）——被销毁</p>
+<p>但是Bean有两个生命周期回调方法：init和destroy，根据定义Bean的方法不同，定义生命周期回调方法的方式也不同</p>
+<ul>
+<li>基于XML配置</li>
+</ul>
+<p>在JavaBean中添加init和destroy方法，在配置文件中指定init和destroy方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;init...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;destroy...&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;StuDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.example.Dao.impl.StuDaoimpl&quot;</span> <span class="attr">init-method</span>=<span class="string">&quot;init&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;destroy&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基于注解配置</li>
+</ul>
+<p>在类中创建方法使用注解标注</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;init...&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@PreDestroy</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;destroy...&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基于Java配置</li>
+</ul>
+<p>通过@Bean中的initMethod和destroyMethod指定Bean类中的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean(value = &quot;StuDao1&quot;, initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line"><span class="keyword">public</span> StuDaoimpl <span class="title function_">getStuDaoimpl</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StuDaoimpl</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>Bean的作用域有五种，默认为singleton</p>
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic/image-20230117005123756.png" alt="image-20230117005123756"></p>
+<p>改变作用域的方法，同样要根据定义Bean方式的不同使用不同的方式</p>
+<ul>
+<li>基于XML配置</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">&quot;StuDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.example.Dao.impl.StuDaoimpl&quot;</span> <span class="attr">scope</span>=<span class="string">&quot;prototype&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基于注解配置</li>
+</ul>
+<p>注解@Scope(“prototype”)</p>
+<ul>
+<li>基于Java配置</li>
+</ul>
+<p>在配置类中的方法上添加注解@Scope(“prototype”)</p>
+<h2 id="DI"><a href="#DI" class="headerlink" title="DI"></a>DI</h2><p>DI：依赖注入是实现IoC的两个方式之一（另一个是依赖查找），Spring通过依赖注入管理Bean之间的依赖关系</p>
+<p>这里的依赖关系并不是指在编译时的继承、实现等关系，而是在实例化一个对象A前，必须要先实例化另一个对象B，相当于建立了一个运行时依赖关系</p>
+<p>依赖注入的类型分为：引用类型（如类对象）、基本数据类型和String</p>
+<h3 id="注入方式"><a href="#注入方式" class="headerlink" title="注入方式"></a>注入方式</h3><p>常用的依赖注入方式有三种，在注入对象是不可变对象是选择构造方法注入，在注入对象是可变对象时能够选择setter注入</p>
+<ol>
+<li>属性注入<ul>
+<li>优点：操作简单</li>
+<li>缺点：1）不能注入不可变对象；2）通用性不好，只适用于IoC容器；3）可能导致依赖循环</li>
+</ul>
+</li>
+<li>setter注入<ul>
+<li>优点：1）通用性好；2）符合单一职责的设计原则；3）允许在类构造后进行重新注入</li>
+<li>缺点：1）不能注入不可变对象；2）注入对象能够被修改</li>
+</ul>
+</li>
+<li>构造方法注入（推荐）<ul>
+<li>缺点：1）通用性好；2）能够注入不可变对象；3）注入对象不能被修改</li>
+</ul>
+</li>
+</ol>
+<p><strong>注解注入</strong></p>
+<ul>
+<li>引用类型：在变量上添加注解@Autowired即可</li>
+<li>基本数据类型+String：添加注解@Autowired，并使用注解@Value赋值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Value(&quot;Hello&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String str;</span><br></pre></td></tr></table></figure>
+
+<p><strong>setter注入</strong></p>
+<p>在需要依赖注入的类中添加为变量添加set方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">setUserDao</span><span class="params">(UserDao userDao)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.userDao = userDao;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>构造方法注入</strong></p>
+<p>在需要依赖注入的类中使用构造方法注入变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">UserServiceimpl</span><span class="params">(UserDao userDao)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.userDao = userDao;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">UserServiceimpl</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当只有一个构造方法时，@Autowired可以省略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">UserServiceimpl</span><span class="params">(UserDao userDao)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.userDao = userDao;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><p>AOP：面向切面编程，是一种编程思想，旨在不改变原始设计的基础上为其增加功能</p>
+<p><strong>基本概念</strong></p>
+<ul>
+<li>连接点JoinPoint：Spring允许引用通知的地方，一般指方法</li>
+<li>切入点Pointcut：增强的连接点</li>
+<li>通知Advice：切入点具体增强的操作，可以是增加操作，也可以是抽取的通用操作</li>
+<li>切面Aspect：通知+切入点</li>
+</ul>
+<h3 id="通知类型"><a href="#通知类型" class="headerlink" title="通知类型"></a>通知类型</h3><p>有五种通知类型：前置通知@Before、后置通知@After、返回后通知@AfterRunning、异常通知@AfterThrowing、环绕通知@Around （常用）</p>
+<p>环绕通知规范：</p>
+<ol>
+<li>必须使用proceedingJoinPoint对象执行原始方法，否则会隔离原始方法</li>
+<li>无论原始方法返回值是什么，通知返回值都设为Object</li>
+</ol>
+<h3 id="通知获取数据"><a href="#通知获取数据" class="headerlink" title="通知获取数据"></a>通知获取数据</h3><p>获取的数据一般是参数、返回值、异常，不同通知方式获取数据的方式可能不同</p>
+<ul>
+<li>获取切入点参数：<ul>
+<li>环绕通知：ProceedJoinPoint对象使用getArgs方法</li>
+<li>其他通知：JoinPoint对象使用getArgs方法</li>
+</ul>
+</li>
+<li>获取返回值参数：<ul>
+<li>环绕通知：ProceedJoinPoint对象执行原始方法获取返回值</li>
+<li>返回后通知</li>
+</ul>
+</li>
+<li>获取切入点方法异常信息<ul>
+<li>环绕通知</li>
+<li>异常通知</li>
+</ul>
+</li>
+</ul>
+<p>环绕通知获取切入点参数并修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserAdvice</span> &#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* org.example.Service.*.UserServiceimpl.testFunc(*))&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">gt</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(&quot;gt()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">testAop</span><span class="params">(ProceedingJoinPoint proceedingJoinPoint)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        Object[] args = proceedingJoinPoint.getArgs();</span><br><span class="line">        args[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">proceed</span> <span class="operator">=</span> proceedingJoinPoint.proceed(args);</span><br><span class="line">        <span class="keyword">return</span> proceed;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Userbean.testFunc(1);</span></span><br></pre></td></tr></table></figure>
+<h3 id="切入点表达式"><a href="#切入点表达式" class="headerlink" title="切入点表达式"></a>切入点表达式</h3><p>切入点表达式：用于描述要增强的方法</p>
+<p><strong>切入点表达式标准格式：</strong>动作关键字（访问修饰符 返回值 包名.类&#x2F;接口名.方法名(参数) 异常名）</p>
+<ul>
+<li>动作关键字：描述切入点的行为动作，一般为execution</li>
+<li>访问修饰符：public、private，一般为public且可以省略</li>
+<li>异常名：一般不写</li>
+</ul>
+<p>为了简便书写切入点表达式，使用<strong>通配符</strong>进行描述</p>
+<ul>
+<li>*：表示单个任意字段，也能表示前后缀</li>
+<li>…：表示任意个任意字段，也能表示前后缀</li>
+<li>+：专用于匹配子类类型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 描述com包下所有业务层接口中的find前缀且一个任意类型参数的所有方法</span></span><br><span class="line">execution (<span class="keyword">public</span> * com..*Service.find*(*))</span><br></pre></td></tr></table></figure>
+
+<p>切入点表达式规范：</p>
+<ol>
+<li>降耦：尽量描述接口而非实现类</li>
+<li>效率：<ul>
+<li>非必须情况下不使用..尽量使用多个*代替..提升效率</li>
+<li>确定的字段使用精准匹配而非通配符</li>
+</ul>
+</li>
+</ol>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><ol>
+<li>导入坐标</li>
+<li>开启Spring AOP</li>
+<li>定义连接点，在通知类中定义通知和切入点</li>
+</ol>
+<p>坐标</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjweaver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.19<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在配置类中开启AOP</p>
+<p>@EnableAspectJAutoProxy</p>
+<p>通知类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserAdvice</span> &#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* org.example.Service.*.UserServiceimpl.testFunc())&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">gt</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;gt()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testAop</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;test AOP&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用环绕通知</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserAdvice</span> &#123;</span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* org.example.Service.*.UserServiceimpl.testFunc())&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">gt</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Around(&quot;gt()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">testAop</span><span class="params">(ProceedingJoinPoint proceedingJoinPoint)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行方法前&quot;</span>);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">proceed</span> <span class="operator">=</span> proceedingJoinPoint.proceed();</span><br><span class="line">        System.out.println(<span class="string">&quot;执行方法后&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> proceed;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic/spring1.png" alt="spring1"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>n0w-y</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://n0w-y.github.io/2023/01/19/Spring/">https://n0w-y.github.io/2023/01/19/Spring/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>😆😆😆</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/01/14/test/">test</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© n0w-y | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
