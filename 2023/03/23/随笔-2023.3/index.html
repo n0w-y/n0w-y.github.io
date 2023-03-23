@@ -17,7 +17,7 @@
     <meta name="keywords" content="13155">
 
 
-<title>记第一次实习 | n0w-y</title>
+<title>随笔-2023.3 | n0w-y</title>
 
 
 
@@ -127,76 +127,11 @@
                 <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">记第一次实习</h1>
+            <h1 class="post-title">随笔-2023.3</h1>
             
                 <div class="post-meta">
                     
@@ -205,14 +140,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 23, 2023&nbsp;&nbsp;10:22:49</a>
+                        Date: <a href="#">March 23, 2023&nbsp;&nbsp;20:55:11</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E5%AE%9E%E4%B9%A0/">实习</a>
+                                <a href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
                             
                         </span>
                     
@@ -221,48 +156,14 @@
         </header>
 
         <div class="post-content">
-            <h1 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h1><p>保研前看过许多保研经验帖，从中学到了很多，所以我也打算写一篇分享分享，后来由于各种原因放弃，现在随便记录下自己找实习的过程吧。</p>
-<p><strong>bg：</strong>有学校Java课程基础，有效自学时间大概一个月，水平较低</p>
-<p><strong>技术栈：J</strong>avaSE、SSM、SpringBoot、Mysql、Redis</p>
-<p><strong>思路：</strong>官网、招聘软件齐下，先小厂练手后中厂大厂</p>
-<p>按时间顺序如下：</p>
-<ol>
-<li><p>夜幻（拒offer）</p>
-<p>面试简单，像是走流程，没锻炼到啥</p>
-</li>
-<li><p>图灵深视（去向）</p>
-<p>问题全面，算法、计网、数据库、项目、场景问题都有</p>
-</li>
-<li><p>亚信科技（放弃面试）</p>
-<p>太懒不想面</p>
-</li>
-<li><p>中科院软件所（放弃面试）</p>
-<p>同上</p>
-</li>
-<li><p>绿盟（没过）</p>
-<p>问题很深，侧重于实战，面试官很好，基本问的都是我的知识漏洞（</p>
-</li>
-<li><p>Mobvista（没过）</p>
-<p>也是侧重于实战</p>
-</li>
-<li><p>欢欣科技（放弃面试）</p>
-<p>即将旅游遂放弃</p>
-</li>
-<li><p>米哈游（放弃面试）</p>
-<p>以应届生身份投的春招，目的是练练，放弃理由同上</p>
-</li>
-<li><p>小红书（放弃面试）</p>
-<p>同7</p>
-</li>
-<li><p>字节（放弃面试）</p>
-<p>太多事情不得不放弃</p>
-</li>
-</ol>
-<p>暂时就记得这些，以后再补~</p>
-<p><strong>Tips：</strong></p>
-<p>以前我一直觉得找实习很难，现在才明白，其实并没有，至少不去大厂并没有，另外学历意外好用，以我个人在某招聘软件上的经历为例：</p>
-<p>左：教育经历只写本科；右：教育经历写上推免的学校</p>
-<p><img src="https://cdn.jsdelivr.net/gh/n0w-y/pic/202303232320055.png" alt="image-20230323232042971"></p>
+            <p>在家庭和学校的保护下待久了就想出去看看，现在终于有了亲身经历，可我并不擅长表达，写一写流水账能记录多少感受算多少吧</p>
+<p>大概是月初拿到的offer，承诺一周到岗，期间还约了两场面试，也是这两场面试让我认识到自己的不足，后来朋友约我去旅游，老友加旅行自然是无法拒绝的，一段经历就开始了</p>
+<p>一路上遇到黑心的士、宾馆、房东、中介，没吃没睡拖着行李在南京满城跑，每当整理好情绪就会立马迎来下一巴掌，司机说就当是交学费，我没说话，我认为错不在我，只是他在为这些恶正名。最后要赶不上去苏州的高铁终于妥协，无良中介从我这里获利让我恶心到身体不适</p>
+<p>和朋友的旅行很累、很充实很开心，几乎要忘了那一天的经历，告别朋友后又回到了租房，房间里的物品甚至气味都让我恶心。没有道理、讲不出理由的，旅行的片段一次次在脑子浮现，我意识到自己是懦弱而不是友好，所以我也错了</p>
+<p>在这几平米的租房里，拖着疲惫的身体进进出出，有人会认为这是在为未来奋斗，可我是一个悲观的人，自己和蜗居的房间，就好像蚁群中一只卑微无名的蚂蚁，比喻恰当吗？我不知道，不过看起来确实很像</p>
+<p>每天走在路上我都在想自己想要什么样的生活，我总是喜欢想很多，却又患得患失，如果要当一只蚂蚁的话，我也想当一只拥有自己思想和生活的蚂蚁，我习惯找几个朋友倾诉，可能他们几个也觉得我nc吧哈哈哈哈，有下次的话骂醒我</p>
+<p>回头再看这些事，感觉又不算什么，写下来后更是像无病呻吟，但是我很庆幸在旅行中买了香水，让香味覆盖整个房间就像是还在旅行，我一边这样骗自己一边计划着逃离这里，曾经许多想法和目标在这几天全都消失，许多事情其实一点不重要</p>
+<p>写完后我又在思考为什么自己要敲这些字</p>
 
         </div>
 
@@ -277,7 +178,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://n0w-y.github.io/2023/03/23/%E6%89%BE%E5%AE%9E%E4%B9%A0/">https://n0w-y.github.io/2023/03/23/%E6%89%BE%E5%AE%9E%E4%B9%A0/</a></span>
+                        <span><a href="https://n0w-y.github.io/2023/03/23/%E9%9A%8F%E7%AC%94-2023.3/">https://n0w-y.github.io/2023/03/23/%E9%9A%8F%E7%AC%94-2023.3/</a></span>
                     </p>
                 
                 
@@ -310,10 +211,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2023/03/23/%E9%9A%8F%E7%AC%94-2023.3/">随笔-2023.3</a>
             
-            
-            <a class="next" rel="next" href="/2023/03/23/%E8%8B%8F%E5%B7%9E%E8%A1%8C/">苏州记</a>
+            <a class="next" rel="next" href="/2023/03/23/%E6%89%BE%E5%AE%9E%E4%B9%A0/">记第一次实习</a>
             
         </section>
 
